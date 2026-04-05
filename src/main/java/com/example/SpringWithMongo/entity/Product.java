@@ -20,4 +20,13 @@ public class Product {
 
     @DocumentReference // N:M Reference
     private List<Supplier> suppliers = new ArrayList<>();
+
+    public String getWarranty() {
+    return warranty;
+    }
+    
+    public List<Supplier> getSuppliers() {
+        return suppliers;
+    }
+    
 }
