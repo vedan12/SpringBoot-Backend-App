@@ -1,0 +1,19 @@
+package com.example.SpringWithMongo.entity;
+
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import java.util.ArrayList;
+import java.util.List;
+
+@Document(collection = "categories")
+@Data
+public class Category {
+    @Id
+    private String id;
+    private String categoryName;
+
+    @DocumentReference(lazy = true) // 1:N Relationship (Lazy loaded)
+    private List<Product> products = new ArrayList<>();
+}
