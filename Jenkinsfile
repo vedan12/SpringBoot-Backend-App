@@ -1,22 +1,33 @@
 pipeline {
-    agent { label 'Jenkins-Worker-01' }
-
-    triggers {
-        githubPush()
-    }
+    agent any
 
     stages {
         stage('Checkout') {
-            steps {
-                git branch: 'main', 
-                    credentialsId: 'github-creds', 
-                    url: 'https://github.com/amarchavan-1/SpringBoot-Backend-App.git'
+        steps {
+            git branch: 'main',
+                url: 'https://github.com/vedan12/SpringBoot-Backend-App.git'
             }
         }
 
         stage('Build') {
+        steps {
+            withMaven(maven: 'Maven3') {
+                    bat 'mvn clean compile'
+                }
+            }
+        }
+
+        stage('Test') {
+        steps {
+            withMaven(maven: 'Maven3') {
+                    bat 'mvn test'
+                }
+            }
+        }
+
+        stage('Deploy') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                bat 'java -jar target\\*.jar'
             }
         }
     }
