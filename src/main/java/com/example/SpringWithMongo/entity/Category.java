@@ -10,14 +10,13 @@ import java.util.List;
 @Document(collection = "categories")
 @Data
 public class Category {
+
     @Id
     private String id;
+
     private String categoryName;
 
-    @DocumentReference(lazy = true) // 1:N Relationship (Lazy loaded)
+    @DocumentReference(lazy = true)
     private List<Product> products = new ArrayList<>();
 
-    public List<Product> getProducts() {
-        return products;
-    }
 }
