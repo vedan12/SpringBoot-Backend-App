@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'java -jar target\\*.jar'
+                bat 'java -jar target/SpringWithMongo-0.0.1-SNAPSHOT.jar'
             }
         }
     }
