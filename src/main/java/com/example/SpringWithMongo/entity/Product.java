@@ -10,23 +10,17 @@ import java.util.List;
 @Document(collection = "products")
 @Data
 public class Product {
+
     @Id
     private String id;
+
     private String sku;
     private double price;
 
-    @DocumentReference // 1:1 Reference
+    @DocumentReference
     private Warranty warranty;
 
-    @DocumentReference // N:M Reference
+    @DocumentReference
     private List<Supplier> suppliers = new ArrayList<>();
 
-    public String getWarranty() {
-    return warranty;
-    }
-    
-    public List<Supplier> getSuppliers() {
-        return suppliers;
-    }
-    
 }
