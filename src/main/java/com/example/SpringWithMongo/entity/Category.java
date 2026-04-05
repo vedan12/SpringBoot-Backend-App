@@ -1,6 +1,5 @@
 package com.example.SpringWithMongo.entity;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
@@ -8,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "categories")
-@Data
 public class Category {
 
     @Id
@@ -19,4 +17,8 @@ public class Category {
     @DocumentReference(lazy = true)
     private List<Product> products = new ArrayList<>();
 
+    // ✅ MANUAL GETTER
+    public List<Product> getProducts() {
+        return products;
+    }
 }
