@@ -16,4 +16,8 @@ public class Category {
 
     @DocumentReference(lazy = true) // 1:N Relationship (Lazy loaded)
     private List<Product> products = new ArrayList<>();
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }
